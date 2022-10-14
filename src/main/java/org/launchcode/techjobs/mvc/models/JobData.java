@@ -59,9 +59,8 @@ public class JobData {
 
         ArrayList<Job> jobs = new ArrayList<>();
 
-        // TODO: when we start using this method, hover and test with the recommended equalsIgnoreCase idea
-        // and see if it breaks anything
-        if (value.toLowerCase().equals("all")){
+        //  IntelliJ recommended swapping .toLowercase.equals for .equalsIgnoreCase.  New method?
+        if (value.equalsIgnoreCase("all")){
             return findAll();
         }
 
