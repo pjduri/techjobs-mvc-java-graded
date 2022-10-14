@@ -59,6 +59,8 @@ public class JobData {
 
         ArrayList<Job> jobs = new ArrayList<>();
 
+        // TODO: when we start using this method, hover and test with the recommended equalsIgnoreCase idea
+        // and see if it breaks anything
         if (value.toLowerCase().equals("all")){
             return findAll();
         }
@@ -127,6 +129,8 @@ public class JobData {
         return jobs;
     }
 
+    // TODO: when we start using this method, hover and test with the recommended equalsIgnoreCase idea
+    // and see if it breaks anything
     private static Object findExistingObject(ArrayList list, String value){
         for (Object item : list){
             if (item.toString().toLowerCase().equals(value.toLowerCase())){
