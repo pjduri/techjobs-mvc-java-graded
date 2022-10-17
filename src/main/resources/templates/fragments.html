@@ -6,6 +6,7 @@
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
     <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
@@ -45,7 +46,7 @@
             <td th:text="${job.employer}"></td>
             <td>
                 <a th:href="@{/list/jobs(column=employer,value=${job.employer})}"
-                   th:text="'More listings from ' + ${job.employer}"></a>
+                class="fa fa-external-link"></a>
             </td>
         </tr>
 
@@ -54,7 +55,7 @@
             <td th:text="${job.location}"></td>
             <td>
                 <a th:href="@{/list/jobs(column=location,value=${job.location})}"
-                   th:text="'More listings in ' + ${job.location}"></a>
+                   class="fa fa-external-link"></a>
             </td>
         </tr>
 
@@ -63,7 +64,7 @@
             <td th:text="${job.positionType}"></td>
             <td>
                 <a th:href="@{/list/jobs(column=positionType,value=${job.positionType})}"
-               th:text="'More listings for ' + ${job.positionType} + ' positions'"></a>
+                   class="fa fa-external-link"></a>
             </td>
         </tr>
 
@@ -72,9 +73,8 @@
             <td th:text="${job.coreCompetency}"></td>
             <td>
                 <a th:href="@{/list/jobs(column=coreCompetency,value=${job.coreCompetency})}"
-               th:text="'More listings seeking competency in ' + ${job.coreCompetency}"></a>
+                   class="fa fa-external-link"></a>
             </td>
-        </tr>
     </table>
 
 </body>
