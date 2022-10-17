@@ -31,35 +31,43 @@
         <tr>
             <td>Id</td>
             <td th:text="${job.id}"></td>
+            <td></td>
         </tr>
         <tr>
             <td>Name</td>
             <td th:text="${job.name}"></td>
+            <td></td>
         </tr>
         <tr>
-            <td>Employer</td>
+            <th>Employer</th>
+            <td th:text="${job.employer}"></td>
             <td>
                 <a th:href="@{/list/jobs(column=employer,value=${job.employer})}"
-                   th:text="${job.employer}"></a>
+                   th:text="'More listings from ' + ${job.employer}"></a>
             </td>
         </tr>
         <tr>
             <td>Location</td>
+            <td th:text="${job.location}"></td>
             <td>
                 <a th:href="@{/list/jobs(column=location,value=${job.location})}"
-                   th:text="${job.location}"></a>
+                   th:text="'More listings in ' + ${job.location}"></a>
             </td>
         </tr>
         <tr>
             <td>Position Type</td>
-            <td><a th:href="@{/list/jobs(column=positionType,value=${job.positionType})}"
-               th:text="${job.positionType}"></a>
+            <td th:text="${job.positionType}"></td>
+            <td>
+                <a th:href="@{/list/jobs(column=positionType,value=${job.positionType})}"
+               th:text="'More listings for ' + ${job.positionType} + ' positions'"></a>
             </td>
         </tr>
         <tr>
             <td>Core Competency</td>
-            <td><a th:href="@{/list/jobs(column=coreCompetency,value=${job.coreCompetency})}"
-               th:text="${job.coreCompetency}"></a>
+            <td th:text="${job.coreCompetency}"></td>
+            <td>
+                <a th:href="@{/list/jobs(column=coreCompetency,value=${job.coreCompetency})}"
+               th:text="'More listings seeking competency in ' + ${job.coreCompetency}"></a>
             </td>
 
         </tr>
