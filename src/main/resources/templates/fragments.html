@@ -6,7 +6,7 @@
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
     <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
@@ -75,6 +75,7 @@
                 <a th:href="@{/list/jobs(column=coreCompetency,value=${job.coreCompetency})}"
                    class="fa fa-external-link"></a>
             </td>
+        </tr>
     </table>
 
 </body>
