@@ -130,9 +130,10 @@ public class JobData {
 
     // TODO: when we start using this method, hover and test with the recommended equalsIgnoreCase idea
     // and see if it breaks anything
+    // done
     private static Object findExistingObject(ArrayList list, String value){
         for (Object item : list){
-            if (item.toString().toLowerCase().equals(value.toLowerCase())){
+            if (item.toString().equalsIgnoreCase(value)){
                 return item;
             }
         }
