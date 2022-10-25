@@ -1,5 +1,8 @@
 package org.launchcode.techjobs.mvc.models;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 
 public class Job {
@@ -12,6 +15,7 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private LinkedHashMap<String, String> fieldsPaired = new LinkedHashMap<>();
 
     // Initialize a unique ID.
     public Job() {
@@ -20,13 +24,25 @@ public class Job {
     }
 
     // Initialize the id and value fields.
-    public Job(String aName, Employer anEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCoreCompetency) {
+    public Job(String aName,
+               Employer anEmployer,
+               Location aLocation,
+               PositionType aPositionType,
+               CoreCompetency aCoreCompetency
+    ) {
         this();
         name = aName;
         employer = anEmployer;
         location = aLocation;
         positionType = aPositionType;
         coreCompetency = aCoreCompetency;
+
+        fieldsPaired.put("Id", String.valueOf(this.id));
+        fieldsPaired.put("Name", this.name);
+        fieldsPaired.put("Employer", this.employer.getValue());
+        fieldsPaired.put("Location", this.location.getValue());
+        fieldsPaired.put("Position Type", this.positionType.getValue());
+        fieldsPaired.put("Core Competency", this.coreCompetency.getValue());
     }
 
     // Custom toString method.
@@ -118,4 +134,9 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    public LinkedHashMap<String, String> getFieldsPaired() {
+        return fieldsPaired;
+    }
+
 }
