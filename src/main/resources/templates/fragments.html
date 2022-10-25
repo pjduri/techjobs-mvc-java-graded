@@ -6,6 +6,7 @@
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
 
     <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
@@ -28,29 +29,9 @@
     </div>
 
     <table th:fragment="job-list" th:each="job : ${jobs}" class="job-listing">
-        <tr>
-            <td>Id</td>
-            <td th:text="${job.id}"></td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td th:text="${job.name}"></td>
-        </tr>
-        <tr>
-            <td>Employer</td>
-            <td th:text="${job.employer}"></td>
-        </tr>
-        <tr>
-            <td>Location</td>
-            <td th:text="${job.location}"></td>
-        </tr>
-        <tr>
-            <td>Position Type</td>
-            <td th:text="${job.positionType}"></td>
-        </tr>
-        <tr>
-            <td>Core Competency</td>
-            <td th:text="${job.coreCompetency}"></td>
+        <tr th:each="item : ${job.fieldsPaired}">
+            <td th:text="${item.key}"></td>
+            <td th:text="${item.value}"></td>
         </tr>
     </table>
 
