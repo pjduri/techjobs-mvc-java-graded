@@ -6,11 +6,11 @@ import org.launchcode.techjobs.mvc.models.JobData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -50,8 +50,13 @@ public class ListController {
 
     @GetMapping(value = "jobs")
     public String listJobsByColumnAndValue(Model model, @RequestParam String column,
-                                           @RequestParam(required = false) String value) {
+                                           @RequestParam(required = false) String value
+                                           //@ModelAttribute Map<String, String> jobMap,
+                                           // @ModelAttribute ArrayList<HashMap<String, String>> jobDisplayList
+                                           ) {
+
         ArrayList<Job> jobs;
+
         if (column.equals("all")){
             jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
@@ -60,9 +65,40 @@ public class ListController {
             model.addAttribute("title", "Jobs with "
                     + columnChoices.get(column) + ": " + value);
         }
+
+//        for (Job job : jobs) {
+//            jobMap = job.getJobMap();
+//        }
+
+        for (Job job : jobs) {
+            ArrayList<HashMap<String, String>> jobDisplayList = new ArrayList<>();
+            job.setFieldsList();
+            jobDisplayList = job.getFieldsList();
+            System.out.println(jobDisplayList);
+            model.addAttribute("jobFields", jobDisplayList);
+
+        }
+
+//        for (Map.Entry<String, Double> student : students.entrySet()) {
+//            System.out.println(student.getKey() + " (" + student.getValue() + ")");
+//            sum += student.getValue();
+//        }
+
+
+
+
+//
+//        model.addAttribute("jobMap", jobMap);
+     //  model.addAttribute("jobDisplayList", jobDisplayList);
         model.addAttribute("jobs", jobs);
 
         return "list-jobs";
     }
 
 }
+
+
+
+
+
+

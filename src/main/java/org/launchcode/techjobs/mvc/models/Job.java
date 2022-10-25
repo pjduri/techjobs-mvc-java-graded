@@ -1,6 +1,6 @@
 package org.launchcode.techjobs.mvc.models;
 
-import java.util.Objects;
+import java.util.*;
 
 public class Job {
 
@@ -12,6 +12,9 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private ArrayList<HashMap<String, String>> fieldsList = new ArrayList<>();
+
+   // private LinkedHashMap<String, String> jobMap = new LinkedHashMap<>();
 
     // Initialize a unique ID.
     public Job() {
@@ -20,7 +23,8 @@ public class Job {
     }
 
     // Initialize the id and value fields.
-    public Job(String aName, Employer anEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCoreCompetency) {
+    public Job(String aName, Employer anEmployer, Location aLocation, PositionType aPositionType,
+               CoreCompetency aCoreCompetency) {
         this();
         name = aName;
         employer = anEmployer;
@@ -118,4 +122,61 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    public ArrayList<HashMap<String, String>> getFieldsList() {
+        return fieldsList;
+    }
+
+    public void setFieldsList() {
+
+        HashMap<String, String> idMap = new HashMap<>();
+
+        idMap.put("Id", String.valueOf(this.id));
+        fieldsList.add(idMap);
+
+        HashMap<String, String> nameMap = new HashMap<>();
+        nameMap.put("Name", this.name);
+        fieldsList.add(nameMap);
+
+        HashMap<String, String> employerMap = new HashMap<>();
+        employerMap.put("Employer", this.employer.getValue());
+        fieldsList.add(employerMap);
+
+        HashMap<String, String> locationMap = new HashMap<>();
+        locationMap.put("Location", this.location.getValue());
+        fieldsList.add(locationMap);
+
+        HashMap<String, String> positionTypeMap = new HashMap<>();
+        positionTypeMap.put("Position Type", this.positionType.getValue());
+        fieldsList.add(positionTypeMap);
+
+        HashMap<String, String> coreCompetencyMap = new HashMap<>();
+        coreCompetencyMap.put("Core Competency", this.coreCompetency.getValue());
+        fieldsList.add(coreCompetencyMap);
+    }
+
+    //    public LinkedHashMap<String, String> renderJobMap() {
+//        this.jobMap.put("Id", String.valueOf(this.getId()));
+//        this.jobMap.put("Name", this.getName());
+//        this.jobMap.put("Employer", this.getEmployer().getValue());
+//        this.jobMap.put("Location", this.getLocation().getValue());
+//        this.jobMap.put("Position Type", this.getPositionType().getValue());
+//        this.jobMap.put("Core Competency", this.getCoreCompetency().getValue());
+//        return this.jobMap;
+//    }
+
+
+//    public LinkedHashMap<String, String> getJobMap() {
+//        return jobMap;
+//    }
+//
+//    public void setJobMap() {
+//        this.jobMap.put("Id", String.valueOf(this.getId()));
+//        this.jobMap.put("Name", this.getName());
+//        this.jobMap.put("Employer", this.getEmployer().getValue());
+//        this.jobMap.put("Location", this.getLocation().getValue());
+//        this.jobMap.put("Position Type", this.getPositionType().getValue());
+//        this.jobMap.put("Core Competency", this.getCoreCompetency().getValue());
+//    }
+
 }
